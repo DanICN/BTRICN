@@ -1,0 +1,84 @@
+<div class="container admin-container">
+	<div class="row">  
+	  <div class="col-md-12">
+	  	<div class="admin-quickbar row">
+			<div class="col-md-1 col-xs-3">
+				<a href="#/matches">Matches</a>
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/questions">Questions</a> 
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/teamsheets">Teams</a>
+			</div>
+			<div class="col-md-2 col-xs-3">
+				<a href="#/answers">Post a Question</a>
+			</div>
+		</div>
+	  	<hr>
+	  	<section class="text-center">
+	  		<h2>Categories List</h2>
+	  		<ul>
+	  			<li class="category-item" ng-repeat="item in categoriesList">
+	  		  	<input type="text" ng-model="item.category" ng-change="categoriesList.$save(item)" />
+	  			</li>
+	  		</ul>
+	  		<label for="adminQuestionTitle">Add new category</label>
+		    <input ng-model="categoryData.category" id="" type="text" class="form-control" placeholder="Category">
+				<br>
+				<button class="btn btn-primary btn-profile" ng-click="add_new_category()">Create Category</button>
+	  	</section>
+	  	<hr>
+	  	<section class="text-center">
+		    <h2>Question List</h2>
+
+		    <div class="select-menu" ng-repeat="(key,item) in questionObj">
+		      <button style="margin: 5px 0;" class="btn btn-primary dropdown-toggle" type="button" id="questionList" data-toggle="dropdown" aria-expanded="true">
+		        {{key}}
+		        <span class="caret"></span>
+		      </button>
+		      <ul class="dropdown-menu" role="menu" aria-labelledby="questionList">
+	          <li ng-repeat="(k,v) in item" role="presentation">
+	            <a href="#/question/{{key}}/{{k}}">
+	              <i class="fa fa-question-circle"></i>
+	              {{ v.questionTitle }}
+	            </a>
+	          </li>
+		      </ul>
+		    </div> 
+		    <hr>
+		    <h2>Create New Question</h2>
+		    <br>
+				<form>
+			    <label for="adminQuestionTitle">Category</label>
+			    <div class="radio">
+					  <label class="radio-inline" ng-repeat="item in categoriesList">
+					  	<input type="radio" class="category-radio" name="optradio" ng-model="data.category" value="{{item.category}}">{{item.category}}
+					  </label>
+					</div>
+					<br>
+					<hr>
+					<label for="adminQuestionTitle">Type</label>
+			    <div class="radio">
+					  <label class="radio-inline"><input type="radio" name="typeradio" class="category-radio" ng-model="data.type" value="question_section">Question</label>
+						<label class="radio-inline"><input type="radio" name="typeradio" class="category-radio" ng-model="data.type" value="teamsheet_section">Teamsheet</label>
+					</div>
+					<br>
+					<hr>
+			    <label for="questionTitle">Question</label>
+			    <input ng-model="data.questionTitle" id="questionTitle" type="text" ng-model="questionTitle" class="form-control" placeholder="Question">
+			    <br>
+			    <label>Answers</label>
+			    <input id="q1" type="text" ng-model="data.q1" class="form-control" placeholder="Answer A">
+			    <input id="q2" type="text" ng-model="data.q2" class="form-control" placeholder="Answer B">
+			    <input id="q3" type="text" ng-model="data.q3" class="form-control" placeholder="Answer C">
+			    <input id="q4" type="text" ng-model="data.q4" class="form-control" placeholder="Answer D">
+			    <br>
+			    	<!-- <label>Power Question?</label> <input type="checkbox" name="powerQuestion" value="Power Question"> -->
+			    <br><br>
+			  </form>
+			    <button class="btn btn-primary btn-profile" ng-click="add_new_question()">Create Question</button>
+			</section>
+		</div>
+	</div>
+</div>

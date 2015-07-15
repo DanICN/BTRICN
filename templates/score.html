@@ -1,0 +1,39 @@
+ <div class="container admin-container">
+	<div class="row">  
+	  <div class="col-md-12">
+	  	<div class="admin-quickbar">
+				<a href="#/matches">Matches</a> 
+				<span>/</span> 
+				<a href="#/questions">Questions</a> 
+				<span>/</span> 
+				<a href="#/teamsheets">Teams</a> 
+				<span>/</span> 
+				<a href="#/answers">Post a Question</a>
+				<span>/</span> 
+				<!-- <a href="#/scores">Scores</a> -->
+			</div>
+	  	<hr>
+	  	<section class="text-center">
+	      <div class="questionPostedStatus" style="display: none;">
+		      <section>
+						<h3>Question posted, please select your answer!</h3>
+						<br>
+	        	<div class="progress">
+						  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+						    <span class="sr-only">60% Complete</span>
+						  </div>
+						</div>
+						<h4>WHO IS THE BEST FOOTBALL PLAYER?</h4>
+						<hr>
+					</section>
+	      </div>
+	      <li ng-repeat="item in scoreData">
+	      	{{ item }}
+	      </li>
+	      <li ng-repeat="item in scoreList">
+	      	{{ item }}
+	      </li>
+			</section>
+		</div>
+	</div>
+</div>

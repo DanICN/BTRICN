@@ -1,0 +1,86 @@
+<div class="container admin-container">
+	<div class="row">  
+
+	  	<div class="admin-quickbar row">
+			<div class="col-md-1 col-xs-3">
+				<a href="#/matches">Matches</a>
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/questions">Questions</a> 
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/teamsheets">Teams</a>
+			</div>
+			<div class="col-md-2 col-xs-3">
+				<a href="#/answers">Post a Question</a>
+			</div>
+		</div>
+	  	<hr>
+      <section class="text-center">
+		    <h2>Edit Match</h2>
+				<br>
+				<form>
+			    <div class="row">
+			      <div class="col-xs-12">
+			      <button ng-if="data.isArchived" ng-click="data.isArchived = false" class="btn btn-primary">Set to Upcoming Match</button>
+			      <button ng-if="!data.isArchived" ng-click="data.isArchived = true" class="btn btn-primary">Stop Match</button>
+			      </div>
+			    </div>
+
+					<div class="row">
+						<div class="col-md-5">
+			        <div class="select-menu">
+			          <button class="btn btn-primary dropdown-toggle" type="button" id="questionList" data-toggle="dropdown" aria-expanded="true">
+			            Select Home Team
+			            <span class="caret"></span>
+			          </button>
+			          <ul class="dropdown-menu" role="menu" aria-labelledby="questionList">
+			            <li ng-click="teamA(item)" class="pick-team" ng-repeat="item in teamList" role="presentation">{{ item.teamName }}</li>
+			          </ul>
+			        </div>
+			        <h3 class="homeTeam selected-team form-control">{{data.homeTeam.teamName}}</h3>
+						</div>
+						<div class="col-md-2 text-center">
+							<span style="font-size: 32px;">vs</span>
+						</div>
+						<div class="col-md-5">
+						<div class="select-menu">
+			          <button class="btn btn-primary dropdown-toggle" type="button" id="questionList" data-toggle="dropdown" aria-expanded="true">
+			            Select Away Team
+			            <span class="caret"></span>
+			          </button>
+			          <ul class="dropdown-menu" role="menu" aria-labelledby="questionList">
+			            <li ng-click="teamB(item)" class="pick-team" ng-repeat="item in teamList" role="presentation">{{ item.teamName }}</li>
+			          </ul>
+			        </div>
+			        <h3 class="awayTeam selected-team form-control">{{data.awayTeam.teamName}}</h3>
+						</div>
+			    </div>
+			    <br>
+
+			    <div class="row">
+						<div class="col-md-6">
+							<label for="matchDate">Date</label><br>
+							<input id="datetimepicker" type="text" ng-model="data.matchTime">
+						</div>
+						<div class="col-md-6">
+							<label for="stadium">Stadium</label>
+							<input id="stadium" type="text" ng-model="data.stadium" class="form-control" placeholder="Stadium">
+						</div>
+			    </div>
+			    <div class="row">
+				  	<div class="col-md-12">
+						  <a href="/#/matches" class="btn btn-primary btn-profile">Done</a>
+					  </div>
+					</div>
+				  <hr>
+				  <div class="row">
+				  	<div class="col-md-12">
+				  		<button ng-click="delete()" class="btn btn-delete">Delete</button>
+				  	</div>
+				  </div>
+			  </form>
+			</section>
+	  </div>
+
+</div>

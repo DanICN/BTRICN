@@ -1,0 +1,77 @@
+<h1 class="page-title">SETTINGS</h1>
+
+<header class="container text-center">
+  <div class="row">
+
+    <div class="col-xs-2 col-no-padding">
+      <div class="uploaded-img" style="margin-right: -25px;">
+        <img src="img/person.png" ng-src="{{data.profileImage}}" id="pImage" alt="Player" class="right img-responsive" imageonload/>
+      </div>
+    </div>
+
+    <div class="col-xs-8 col-no-padding">
+      <div class="header-text">
+        <h5>{{data.firstName}}</h5>
+      </div>
+      <div class="header-text">
+        <h5>{{data.favoriteTeam}}</h5>
+      </div>
+    </div>
+
+    <div class="col-xs-2 col-no-padding">
+      <div class="uploaded-img" style="margin-left: -25px;">
+        <img src="img/badge.png" ng-src="{{data.favoriteTeamImage}}" alt="Team" class="left img-responsive"/>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<section class="profile-settings">
+  <div class="container text-center" style="margin-top: 25px;">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <h3>Pick profile image</h3>
+
+        <button ng-click="uploadFile()" class="btn btn-primary btn-profile"><i class="fa fa-camera"></i> Change Profile Picture</button>
+
+      </div>
+    </div>
+    <form>
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>Name</h3>
+          <input id="firstName" type="firstName" ng-model="data.firstName" class="form-control" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>Favorite Team</h3>
+        <div class="select-menu">
+          <button class="btn btn-primary dropdown-toggle" ng-click="currentTeam()" type="button" id="questionList" data-toggle="dropdown" aria-expanded="true">
+            Select Favorite Team
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="questionList">
+            <li ng-click="favoriteTeam(item)" class="pick-team" ng-repeat="item in list" role="presentation">{{ item.teamName }}</li>
+          </ul>
+        </div>
+          <input id="favoriteTeam" type="text" ng-model="teamData.teamName" class="form-control" placeholder="{{data.favoriteTeam}}" disabled required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+        <a href="#/change-password/:id" class="btn btn-primary btn-profile">Change Password</a>
+        <br>
+        <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <a href="#/login" class="btn btn-primary btn-profile">Done</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

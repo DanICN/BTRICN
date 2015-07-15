@@ -1,0 +1,114 @@
+<h1 class="page-title"></h1>
+
+<header class="container text-center">
+  <div class="row">
+
+    <div class="col-xs-12 col-no-padding text-center">
+      <div class="uploaded-img" style="margin 0 auto;">
+        <img src="img/person.png" ng-src="{{data.profileImage}}" alt="Player" class="img-responsive"/>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<div class="container">
+  <div class="row team-scores">
+    <div class="col-xs-3 no-padding">
+      <div class="uploaded-img left">
+        <img ng-src="{{matchData.homeTeam.teamImage}}" alt="Team" class="img-responsive" style="border-radius: 0; border: 0; background: none;"/>
+      </div>
+    </div>
+    <div class="col-xs-6 col">
+      <div class="score-stats text-center">
+        <h3>{{matchData.homeTeam.teamName}}</h3>
+        <h1 style="font-size: 30px; line-height: 60px;">v</h1>
+        <h3>{{matchData.awayTeam.teamName}}</h3>
+      </div>
+    </div>
+    <div class="col-xs-3 no-padding">
+      <div class="uploaded-img right">
+        <img ng-src="{{matchData.awayTeam.teamImage}}" alt="Team" class="img-responsive" style="border-radius: 0; border: 0; background: none;"/>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="container text-center">
+    <section class="next-match">
+      <h3>Next Match</h3>
+      <h5>(Premier League)</h5>
+    </section>
+
+    <section class="awaiting-game">
+      <h2 class="yellow">AWAITING GAME</h2>
+      <p class="dateCountdown"></p>
+    </section>
+
+    <div class="row match-details">
+      <div class="col-xs-12 col-no-padding">
+        <ul class="countdown">
+          <li>
+            <div class="time-value time-value-awaiting-game days">00
+            </div>
+            <span class="time-type">DAYS</span>
+          </li>
+          <li>
+            <div class="time-value time-value-awaiting-game hrs">00
+            </div>
+            <span class="time-type">HRS</span>
+          </li>
+          <li>
+            <div class="time-value time-value-awaiting-game mins">00
+            </div>
+            <span class="time-type">MINS</span>
+          </li>
+          <li>
+            <div class="time-value time-value-awaiting-game secs">00
+            </div>
+            <span class="time-type">SECS</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-padding-5">
+        <ul class="date-time-stadium">
+          <li>Date: {{matchData.matchTime.split(' ')[0]}}</li>
+          <li>Kick off: {{matchData.matchTime.split(' ')[1]}}</li>
+          <li class="last">Stadium: {{matchData.stadium}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid col-no-padding">
+  <div class="row">
+    <div class="col-xs-12 col-no-padding">
+      <a href="" class="set-reminder"><i class="fa fa-clock-o"></i> SET REMINDER</a>
+    </div>
+  </div>
+</div>
+
+<br>
+
+ <section class="share text-center">
+  <div class="row">
+    <div class="col-xs-12">
+      <hr>
+      <a href="#/twitter/:id">Share with your mates <i class="social-icon fa fa-twitter"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="col-xs-12 col-no-padding">
+    <div class="footer-block">
+      <a href="#/fixtures/:id">
+        Back to Fixtures
+      </a>
+    </div>
+  </div>
+</footer>

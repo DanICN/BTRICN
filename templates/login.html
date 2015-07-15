@@ -1,0 +1,27 @@
+<audio id="whistle" src="sounds/whistle.mp3" preload="auto"></audio>
+
+<section class="login container text-center">
+  <div class="row">
+  	<div class="col-xs-12">
+  		<img src="/img/logo_splash_screen.png" class="login-logo" alt="Be The Ref"/>
+  	</div>
+  </div>
+  <div class="row">
+  	<div class="col-xs-12">
+			<form>
+				<input class="email form-control" placeholder="Email" type="email" ng-model="user.email" required="" />
+				<input class="password form-control" placeholder="Password" type="password" ng-model="user.password" required="" />
+				<button class="btn register btn-login" ng-click="submit()">Sign In</button>
+			</form>
+      <a href="#/forgot-password" class="btn-text">Forgot your password?</a>
+    </div>
+  </div>
+  <br>
+	<hr>
+	<div class="row" style="margin-top: 20px;">
+  	<div class="col-xs-12">
+			Don't have an account yet?
+			<a href="#/register" class="btn register btn-login">Register Free</a>
+  	</div>
+  </div>
+</section>

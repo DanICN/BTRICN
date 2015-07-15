@@ -1,0 +1,269 @@
+<h1 class="page-title">LIVE MATCHES</h1>
+
+<!-- Modal -->
+<div class="modal fade myModal user-message-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        {{messageData.message}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="whistle" src="sounds/whistle.mp3" preload="auto"></audio>
+<audio id="crowd" src="sounds/crowd.mp3" preload="auto"></audio>
+
+<div class="answer-is-overlay">
+  <div class="answer-is-overlay-text">Get ready incoming question...</div>
+</div>
+
+<div class="container-fluid col-no-padding">
+  
+  <div class="row" style="margin-top: -15px;">
+    <div class="col-md-12 col-no-padding">
+      <div class="content-strip" style="background: rgba(0, 0, 0, 0.4); padding: 8px 0;">
+        <span>Players online </span><span class="yellow" style="margin: 8px 10px;"><strong>{{totalPlayers}}</strong></span>
+        <span>League position</span><span class="yellow" style="margin: 8px 10px;"><strong>{{data.leaguePosition}}</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-no-padding text-center">
+      <div class="content-strip" style="background: rgba(0, 0, 0, 0.4);">
+        <div class="row">
+          <div class="col-xs-4">
+            <p class="yellow" style="margin: 7px 0px;">Match score</p>
+            <p>{{data.matchScore[matchlist[0].$id].totalScore}}</p>
+          </div>
+          <div class="col-xs-4">
+            <div class="uploaded-img" style="margin 0 auto;">
+              <img src="img/person.png" ng-src="{{data.profileImage}}" alt="Player" class="img-responsive"/>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <p class="yellow" style="margin: 7px 0px;">Match Accuracy</p>
+            <p ng-show="Math.round(data.matchScore[matchlist[0].$id].totalCorrect / data.matches[matchlist[0].$id] * 100)">{{Math.round(data.matchScore[matchlist[0].$id].totalCorrect / data.matches[matchlist[0].$id] * 100)}}%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="match-score text-center">
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="home-team">
+          <div class="uploaded-img">
+            <img class="" src="{{matchlist[0].homeTeam.teamImage}}" alt="Team" class="img-responsive" style="border-radius: 0;"/>
+            <div style="margin-top: 5px" class="text-center"><strong class="">{{matchlist[0].homeTeam.teamName}}</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4" style="padding: 0;">
+        <h1 style="font-size: 32px; margin-top: 25px;">{{liveScore.homeTeam}} <span class="score-seperator">v</span> {{liveScore.awayTeam}}</h1>
+      </div>
+      <div class="col-xs-4">
+        <div class="away-team">
+          <div class="uploaded-img">
+            <img class="teamName2Img" src="{{matchlist[0].awayTeam.teamImage}}" alt="Team" class="img-responsive" style="border-radius: 0;"/>
+            <div style="margin-top: 5px" class="text-center"><strong class="">{{matchlist[0].awayTeam.teamName}}</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- whistle section -->
+  <section class="whistle text-center">
+    <img src="img/whistle.png" alt="Match in play"/>
+    <h1 class="question-post-status question-post-title">IN PLAY</h1>
+  </section>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade question-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+            <span class="sr-only">100% Complete</span>
+          </div>
+        </div>
+        
+        <div class="text-center">
+          <h4 class="question_title"></h4>
+          <p class="refAnswer"></p>
+          <p class="answerTime"></p>
+          <p class="question_countdown"></p>
+          <p class="question_score"></p>
+        </div>
+
+        <!-- questions section -->
+        <section class="question_section question_type">
+          <div class="row">
+            <div class="col-xs-12 col-no-padding">
+              <div class="explanation-box">
+                <p><strong>Official Be The Ref Comment:</strong></p>
+                <p class="explanation"></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-no-padding">
+              <div class="question q1_block" ng-click="select_answer(q1, 1)">
+                <div class="row">
+                  <div class="col-xs-1">
+                    <div class="question-option q1_option">A</div>
+                  </div>
+                  <div class="col-xs-7">
+                    <div class="question-text q1" id="question1" data-id="q1">{{q1}}</div>
+                  </div>
+                  <div class="col-xs-2 col-no-padding playerbase-percentage playerbase-percentage-1">
+                  </div>
+                  <div class="col-xs-2 col-no-padding scores score_q1">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-no-padding">
+              <div class="question q2_block" ng-click="select_answer(q2, 2)">
+                <div class="row">
+                  <div class="col-xs-1">
+                    <div class="question-option q2_option">B</div>
+                  </div>
+                  <div class="col-xs-7">
+                    <div class="question-text q2" id="question2" data-id="q2">{{q2}}</div>
+                  </div>
+                  <div class="col-xs-2 col-no-padding playerbase-percentage playerbase-percentage-2">
+                  </div>
+                  <div class="col-xs-2 col-no-padding scores score_q2">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-no-padding">
+              <div class="question q3_block" ng-click="select_answer(q3, 3)">
+                <div class="row">
+                  <div class="col-xs-1">
+                    <div class="question-option q3_option">C</div>
+                  </div>
+                  <div class="col-xs-7">
+                    <div class="question-text q3" id="question3" data-id="q3">{{q3}}</div>
+                  </div>
+                  <div class="col-xs-2 col-no-padding playerbase-percentage playerbase-percentage-3">
+                  </div>
+                  <div class="col-xs-2 col-no-padding scores score_q3">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-no-padding">
+              <div class="question q4_block" ng-click="select_answer(q4, 4)">
+                <div class="row">
+                  <div class="col-xs-1">
+                    <div class="question-option q4_option">D</div>
+                  </div>
+                  <div class="col-xs-7">
+                    <div class="question-text q4" id="question4" data-id="q4">{{q4}}</div>
+                  </div>
+                  <div class="col-xs-2 col-no-padding playerbase-percentage playerbase-percentage-4">
+                  </div>
+                  <div class="col-xs-2 col-no-padding scores score_q4">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- teamsheets -->
+        <div class="teamsheet_section question_type">
+          <div class="container col-no-padding">
+            <div class="row">
+              <div class="col-xs-12 col-no-padding">
+                <div class="explanation-box">
+                  <p><strong>Official Be The Ref Comment:</strong></p>
+                  <p class="explanation"></p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <ul ng-if="matchlist[0].homeTeam.players" class="live-match-teamsheet-player-matchlist" ng-repeat="(key, player) in matchlist[0].homeTeam.players">
+                  <button ng-if="key != 0" ng-click='select_answer(player, key)' class="q{{key}}_option_player option_player btn btn-team">{{player}}</button>
+                  <span class="playerbase-percentage playerbase-percentage-{{key}}"></span>
+                </ul>
+                <br>
+                <h4><strong>Subs</strong></h4>
+
+                <ul ng-if="matchlist[0].homeTeam.subs" class="live-match-teamsheet-player-matchlist subs" ng-repeat="(key, sub) in [matchlist[0].homeTeam.subs] track by $index">
+                  <button ng-if="key != 0" ng-click='select_answer(sub, key+11)' class="q{{key+11}}_option_player option_player btn btn-team">{{sub}}</button><span class="playerbase-percentage playerbase-percentage-{{key+11}}"></span>
+                </ul>
+
+                <ul class="live-match-teamsheet-player-matchlist subs" ng-repeat="(key, sub) in matchlist[0].homeTeam.subs track by $index">
+                  <button ng-if="key != 0" ng-click='select_answer(sub, key+11)' class="q{{key+11}}_option_player option_player btn btn-team">{{sub}}</button>
+                  <span class="playerbase-percentage playerbase-percentage-{{key+11}}"></span>
+                </ul>
+
+              </div>
+              <div class="col-xs-6">
+                <ul class="live-match-teamsheet-player-matchlist" ng-repeat="(key, player) in matchlist[0].awayTeam.players">
+                  <button ng-if="key != 0" ng-click='select_answer(player, key+22)' class="q{{key+22}}_option_player option_player btn btn-team">{{player}}</button><span class="playerbase-percentage playerbase-percentage-{{key+22}}"></span>
+                </ul>
+                <br>
+                <h4><strong>Subs</strong></h4>
+                  <ul class="live-match-teamsheet-player-matchlist subs" ng-repeat="(key, sub) in matchlist[0].awayTeam.subs track by $index">
+                    <button ng-if="key != 0" ng-click='select_answer(sub, key+33)' class="q{{key+33}}_option_player option_player btn btn-team">{{sub}}</button>
+                    <span class="playerbase-percentage playerbase-percentage-{{key+33}}"></span>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="col-xs-6 col-no-padding">
+    <div class="footer-block">
+      <a href="#/live-match-teamsheet/:id" class="teamsheets">
+        Teamsheet
+      </a>
+    </div>
+  </div>
+
+  <div class="col-xs-6 col-no-padding">
+    <div class="footer-block">
+      <a href="#/twitter/:id">
+        Tweet
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div class="is-footer"></div>

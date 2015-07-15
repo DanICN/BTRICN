@@ -1,0 +1,54 @@
+<div class="container admin-container">
+	<div class="row">  
+	  <div class="col-md-12">
+	  	<div class="admin-quickbar row">
+			<div class="col-md-1 col-xs-3">
+				<a href="#/matches">Matches</a>
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/questions">Questions</a> 
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/teamsheets">Teams</a>
+			</div>
+			<div class="col-md-2 col-xs-3">
+				<a href="#/answers">Post a Question</a>
+			</div>
+		</div>
+    	<hr>
+    	<section class="text-center">
+	  		<h2>Categories List</h2>
+	  		<button ng-if="data.category != item.category" ng-repeat="item in categoriesList" class="btn btn-primary btn-profile" ng-click="moveCategory(item.category)"><span style="opacity: 0.65;">Move to:</span> {{item.category}}</button>
+	  		
+	  	</section>
+	  	<hr>
+    	<section class="text-center">
+		    <h2>Edit Question</h2>
+		    <br>
+				<form>
+					<label for="adminQuestionTitle">Type</label>
+			    <div class="radio">
+					  <label class="radio-inline"><input type="radio" name="typeradio" ng-model="data.type" value="question_section">Question</label>
+						<label class="radio-inline"><input type="radio" name="typeradio" ng-model="data.type" value="teamsheet_section">Teamsheet</label>
+					</div>
+					<br>
+					<hr>
+			    <label for="questionTitle">Question</label>
+			    <input id="questionTitle" type="text" ng-model="data.questionTitle" class="form-control" placeholder="Question">
+			    <br>
+			    <label>Answers</label>
+			    <input id="q1" type="text" ng-model="data.q1" class="form-control" placeholder="Answer A">
+			    <input id="q1" type="text" ng-model="data.q2" class="form-control" placeholder="Answer B">
+			    <input id="q1" type="text" ng-model="data.q3" class="form-control" placeholder="Answer C">
+			    <input id="q1" type="text" ng-model="data.q4" class="form-control" placeholder="Answer D">
+			    <br>
+			    	<!-- <label>Power Question?</label> <input type="checkbox" name="powerQuestion" value="Power Question"> -->
+			    <br><br>
+			    <a href="#/questions" class="btn btn-primary btn-profile">Done</a>
+			    <hr>
+					<button ng-click="delete()" class="btn btn-delete">Delete</button>
+			  </form>
+	 		</div>
+	 	</section>
+	</div>
+</div>

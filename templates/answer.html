@@ -1,0 +1,51 @@
+<div class="loading-overlay" style="display: none;">
+	<div class="loading-overlay-text" style="margin-top: 0;">Preparing question for players...</div>
+</div>
+
+ <div class="container admin-container">
+	<div class="row">  
+	  <div class="col-md-12">
+	  	<div class="admin-quickbar row">
+			<div class="col-md-1 col-xs-3">
+				<a href="#/matches">Matches</a>
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/questions">Questions</a> 
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/teamsheets">Teams</a>
+			</div>
+			<div class="col-md-2 col-xs-3">
+				<a href="#/answers">Post a Question</a>
+			</div>
+		</div>
+	  	<hr>
+	  	<section class="text-center">
+	      <div class="questionPostedStatus">
+		      <section>
+						<br>
+						<div id="questionPosted" class="alert alert-success" role="alert" style="display: none;">Question posted!</div>
+	        	<div class="progress">
+						  <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+						  </div>
+						</div>
+						<hr>
+					</section>
+	      </div>
+	      <h2>{{questionData.questionTitle}}</h2>
+	      <hr>
+	      <h3>Pick Answer</h3>
+	      <form class="pick-answer">
+					<button ng-click="officalAnswer('q1', questionData.q1)" class="admin-select-question btn btn-primary btn-answer btn-profile match-box">{{questionData.q1}}</button>
+					<button ng-click="officalAnswer('q2', questionData.q2)" class="admin-select-question btn btn-primary btn-answer btn-profile match-box">{{questionData.q2}}</button>
+					<button ng-click="officalAnswer('q3', questionData.q3)" class="admin-select-question btn btn-primary btn-answer btn-profile match-box">{{questionData.q3}}</button>
+					<button ng-click="officalAnswer('q4', questionData.q4)" class="admin-select-question btn btn-primary btn-answer btn-profile match-box">{{questionData.q4}}</button>
+					<hr>
+					<h3>Official Be The Ref Comment</h3>
+					<textarea rows="4" class="match-box explaination-box" ng-model="explanation"></textarea>
+					<button ng-click="postQuestion()" type="submit" class="btn btn-primary btn-profile">Post Question</button>
+	      </form>
+			</section>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,72 @@
+<h1 class="page-title">Team Sheet</h1>
+
+<div class="container col-no-padding">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="no-border no-background uploaded-img ">
+        <img class="teamName1Img" src="{{list[0].homeTeam.teamImage}}" alt="Team" class="img-responsive"/>
+        <div class="text-center">
+          <h4><strong class="teamName1">{{list[0].homeTeam.teamName}}</strong></h4>
+        </div>
+      </div>
+    </div>
+   <!--  <div class="col-xs-2 text-center">
+      <h2 style="margin-top: 40px;"><strong>First Half</strong></h2>
+    </div> -->
+    <div class="col-xs-6">
+      <div class="uploaded-img  no-border no-background">
+        <img class="teamName2Img" src="{{list[0].awayTeam.teamImage}}" alt="Team" class="img-responsive"/>
+        <div class="text-center">
+          <h5><strong class="teamName2">{{list[0].awayTeam.teamName}}</strong></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row text-center">
+    <div class="col-xs-6">
+      <ul class="live-match-teamsheet-player-list" ng-repeat="(key, player) in list[0].homeTeam.players">
+        <li>{{player}}</li>
+      </ul>
+    </div>
+    <div class="col-xs-6">
+      <ul class="live-match-teamsheet-player-list" ng-repeat="(key, player) in list[0].awayTeam.players">
+        <li>{{player}}</li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <h4 class="text-center"><strong>Subs</strong></h4>
+    <div class="col-xs-6">
+      <ul class="live-match-teamsheet-player-list subs" ng-repeat="(key, sub) in list[0].homeTeam.subs">
+        <li>{{sub}}</li>
+      </ul>
+    </div>
+    <div class="col-xs-6">
+      <ul class="live-match-teamsheet-player-list subs" ng-repeat="(key, sub) in list[0].awayTeam.subs">
+        <li>{{sub}}</li>
+      </ul>
+    </div>
+
+    <footer>
+      <div class="col-xs-6 col-no-padding">
+        <div class="footer-block" style="background: rgb(173, 14, 14);">
+          <a href="#/live-matches/:id">
+            <i style="margin-right: 5px;" class="fa fa-chevron-left"></i> Return to match
+          </a>
+        </div>
+      </div>
+
+      <div class="col-xs-6 col-no-padding">
+        <div class="footer-block">
+          <a href="#/twitter/:id">
+            Tweet
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+  <div class="is-footer"></div>

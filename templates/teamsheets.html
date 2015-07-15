@@ -1,0 +1,140 @@
+<div class="container admin-container">
+	<div class="row">  
+		<div class="admin-quickbar row">
+			<div class="col-md-1 col-xs-3">
+				<a href="#/matches">Matches</a>
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/questions">Questions</a> 
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/teamsheets">Teams</a>
+			</div>
+			<div class="col-md-2 col-xs-3">
+				<a href="#/answers">Post a Question</a>
+			</div>
+		</div>
+		<hr>
+		<h2 class="text-center">Teamsheets</h2>
+		<hr>
+		<ul>
+			<li ng-repeat="item in list" class="match-box">
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="#/teamsheet/{{item.$id}}" class="match-link">
+							<div>{{ item.teamName }}</div>
+						</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<hr>
+		<section class="text-center">
+			<h2>Create New Teamsheet</h2>
+			<form>
+				<div class="row">
+					<div class="col-md-12 col-no-padding">
+						<input id="teamName" type="text" ng-model="data.teamName" class="form-control" placeholder="Team Name">
+						<button ng-click="uploadFile()" class="btn btn-primary btn-profile"><i class="fa fa-camera"></i> Add Team Picture</button>
+					</div>
+				</div>
+				<br>
+					<div class="row">
+						<div class="col-md-offset-4 col-md-4">
+							<h3>Starting Lineup</h3>
+							<br>
+							<input id="player1" type="text" ng-model="data.players[1]" class="form-control" placeholder="Player 1">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<input id="player2" type="text" ng-model="data.players[2]" class="form-control" placeholder="Player 2">
+						</div>
+						<div class="col-md-3">
+							<input id="player3" type="text" ng-model="data.players[3]" class="form-control" placeholder="Player 3">
+						</div>
+						<div class="col-md-3">
+							<input id="player4" type="text" ng-model="data.players[4]" class="form-control" placeholder="Player 4">
+						</div>
+						<div class="col-md-3">
+							<input id="player5" type="text" ng-model="data.players[5]" class="form-control" placeholder="Player 5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<input id="player6" type="text" ng-model="data.players[6]" class="form-control" placeholder="Player 6">
+						</div>
+						<div class="col-md-3">
+							<input id="player7" type="text" ng-model="data.players[7]" class="form-control" placeholder="Player 7">
+						</div>
+						<div class="col-md-3">
+							<input id="player8" type="text" ng-model="data.players[8]" class="form-control" placeholder="Player 8">
+						</div>
+						<div class="col-md-3">
+							<input id="player9" type="text" ng-model="data.players[9]" class="form-control" placeholder="Player 9">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-offset-3 col-md-3">
+							<input id="player10" type="text" ng-model="data.players[10]" class="form-control" placeholder="Player 10">
+						</div>
+						<div class="col-md-3">
+							<input id="player11" type="text" ng-model="data.players[11]" class="form-control" placeholder="Player 11">
+						</div>
+					</div>
+					<br>
+					<hr>
+					<div class="row">
+						<div class="col-md-offset-4 col-md-4">
+							<h3>Substitutes</h3>
+							<br>
+							<input id="sub1" type="text" ng-model="data.subs[1]" class="form-control" placeholder="Sub 1">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<input id="sub2" type="text" ng-model="data.subs[2]" class="form-control" placeholder="Sub 2">
+						</div>
+						<div class="col-md-3">
+							<input id="sub3" type="text" ng-model="data.subs[3]" class="form-control" placeholder="Sub 3">
+						</div>
+						<div class="col-md-3">
+							<input id="sub4" type="text" ng-model="data.subs[4]" class="form-control" placeholder="Sub 4">
+						</div>
+						<div class="col-md-3">
+							<input id="sub5" type="text" ng-model="data.subs[5]" class="form-control" placeholder="Sub 5">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<input id="sub6" type="text" ng-model="data.subs[6]" class="form-control" placeholder="Sub 6">
+						</div>
+						<div class="col-md-3">
+							<input id="sub7" type="text" ng-model="data.subs[7]" class="form-control" placeholder="Sub 7">
+						</div>
+						<div class="col-md-3">
+							<input id="sub8" type="text" ng-model="data.subs[8]" class="form-control" placeholder="Sub 8">
+						</div>
+						<div class="col-md-3">
+							<input id="sub9" type="text" ng-model="data.subs[9]" class="form-control" placeholder="Sub 9">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-offset-3 col-md-3">
+							<input id="sub10" type="text" ng-model="data.subs[10]" class="form-control" placeholder="Sub 10">
+						</div>
+						<div class="col-md-3">
+							<input id="sub11" type="text" ng-model="data.subs[11]" class="form-control" placeholder="Sub 11">
+						</div>
+					</div>
+					<br>
+					
+					<input ng-hide="true" type="number" ng-model="data.supporters" class="form-control" ng-init="data.supporters=0">
+					<input ng-hide="true" type="number" ng-model="data.totalScore" class="form-control" ng-init="data.totalScore=0">
+
+					<button class="btn btn-primary btn-profile" ng-click="add_new_teamsheet()">Create Team</button>
+			  </form>
+			</section>
+	  </div>
+	</div>
+</div>

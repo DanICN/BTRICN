@@ -1,0 +1,93 @@
+<h1 class="page-title">Performances</h1>
+
+<header class="container text-center">
+  <div class="row">
+
+    <div class="col-xs-2 col-no-padding">
+      <div class="uploaded-img" style="margin-right: -25px;">
+        <img src="img/person.png" ng-src="{{data.profileImage}}" alt="Player" class="right img-responsive"/>
+      </div>
+    </div>
+
+    <div class="col-xs-8 col-no-padding">
+      <div class="header-text">
+        <h5>{{data.firstName}}</h5>
+      </div>
+      <div class="header-text">
+        <h5>{{data.favoriteTeam}}</h5>
+      </div>
+    </div>
+    <div class="col-xs-2 col-no-padding">
+      <div class="uploaded-img" style="margin-left: -25px;">
+        <img src="img/badge.png" ng-src="{{data.favoriteTeamImage}}" alt="Team" class="left img-responsive"/>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<div class="container-fluid col-no-padding">
+
+  <div class="content-strip strip-green">
+    BTR League Position<br> 
+    <i ng-if="data.prevPosition < data.leaguePosition" class="position-arrow glyphicon glyphicon-chevron-down negative"></i> 
+    <i ng-if="data.prevPosition == data.leaguePosition" class="position-arrow glyphicon glyphicon-chevron-left yellow neutral"></i>
+    <i ng-if="data.prevPosition == data.leaguePosition" class="position-arrow glyphicon glyphicon-chevron-right yellow neutral"></i>
+    <i ng-if="data.prevPosition > data.leaguePosition" class="position-arrow glyphicon glyphicon-chevron-up positive"></i> 
+    <strong>{{data.leaguePosition}}</strong>
+  </div>
+
+  <div class="content-strip">
+    <div class="row">
+      <div class="col-xs-6 stat-box">
+        <span class="stat-title">Games Played</span><br>
+        <strong class="games_played">{{data.totalMatchesPlayed}}</strong>
+      </div>
+      <div class="col-xs-6 stat-box">
+        <span class="stat-title">Ave BTR Score Per Game</span><br>
+        <strong>{{aveScorePerGame}}</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-strip">
+    <div class="row">
+      <div class="col-xs-6 stat-box">
+        <span class="stat-title">BTR Score</span><br>
+        <strong>{{data.totalScore}}</strong>
+      </div>
+      <div class="col-xs-6 stat-box">
+        <span class="stat-title">Ave Accuracy</span><br>
+        <strong>
+          {{aveAccuracy}}%
+        </strong>
+      </div>
+    </div>
+  </div>
+
+  <section class="match-results content-strip strip-green">
+    <strong>MATCH RESULTS</strong>
+  </section>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Date</th>
+        <th class="text-center">Match</th>
+        <th class="text-center">Score</th>
+        <th class="text-center">Accuracy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in list" ng-if="item.isArchived">
+        <td>{{item.matchTime}}</td>
+        <td>{{ item.homeTeam.teamName }} Vs {{ item.awayTeam.teamName }}</td>
+        <td ng-if="data.matchScore[item.$id].totalScore">{{data.matchScore[item.$id].totalScore}}</td>
+        <td ng-if="!data.matchScore[item.$id].totalScore">-</td>
+        <td ng-if="data.matchScore[item.$id].totalCorrect">
+          {{Math.round( (data.matchScore[item.$id].totalCorrect / data.matchScore[item.$id].totalAnswered) * 100 ) }}
+        </td>
+        <td ng-if="!data.matchScore[item.$id].totalCorrect">-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

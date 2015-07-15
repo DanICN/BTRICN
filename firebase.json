@@ -1,0 +1,9 @@
+{
+  "firebase": "btr-icn-backup",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

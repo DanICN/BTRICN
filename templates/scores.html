@@ -1,0 +1,36 @@
+ <div class="container admin-container">
+	<div class="row">  
+	  <div class="col-md-12">
+	  	<div class="admin-quickbar">
+				<a href="#/matches">Matches</a> 
+				<span>/</span> 
+				<a href="#/questions">Questions</a> 
+				<span>/</span> 
+				<a href="#/teamsheets">Teams</a> 
+				<span>/</span> 
+				<a href="#/answers">Post a Question</a>
+				<span>/</span> 
+				<!-- <a href="#/scores">Scores</a> -->
+			</div>
+	  	<hr>
+	  	<section class="text-center">
+		    <h2>Pick Answer</h2>
+		    <br>
+		    <div class="select-menu">
+		      <button class="btn btn-primary dropdown-toggle" type="button" id="questionList" data-toggle="dropdown" aria-expanded="true">
+		        Select Answer
+		        <span class="caret"></span>
+		      </button>
+		      <ul class="dropdown-menu" role="menu" aria-labelledby="questionList">
+	          <li ng-repeat="item in answerList" role="presentation">
+	            <a href="#/score/{{item.$id}}">
+	              <i class="fa fa-question-circle"></i>
+	              {{ item.adminQuestionTitle }}
+	            </a>
+	          </li>
+		      </ul>
+		    </div>
+			</section>
+		</div>
+	</div>
+</div>

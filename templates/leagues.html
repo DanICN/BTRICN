@@ -1,0 +1,156 @@
+<section class="player-league">
+  <h1 class="page-title">Player League</h1>
+  <div class="container-fluid col-no-padding">
+  	<table class="score table table-striped">
+  	  <thead>
+  	    <tr>
+  				<th class="text-center">Pos</th>
+  				<th class="text-center">Member</th>
+  				<th class="text-center">Played</th>
+          <th class="text-center">BTR Points</th>
+  				<th class="text-center">Av Acc</th>
+  			</tr>
+  	  </thead>
+  	  <tbody>
+  	    <tr ng-repeat="(key, item) in leagueList | orderBy:['-$value'] ">
+          <td>{{key + 1}}</td>
+  	      <td style="width: 150px;">
+  	      	<div class="uploaded-img" style="max-width: 25px; float: left; margin-right: 6px;">
+          		<img src="img/person.png" ng-src="{{userObject[item.$id].profileImage}}" alt="Player" class="img-responsive" style="padding: 1px;"/>
+        		</div>
+  	      	<span style="float: left; line-height: 25px">{{userObject[item.$id].firstName}}</span>
+  	      </td>
+          <td ng-show="userObject[item.$id].totalMatchesPlayed">{{userObject[item.$id].totalMatchesPlayed}}</td>
+          <td ng-hide="userObject[item.$id].totalMatchesPlayed">0</td>
+          <td>{{item.$value}}</td>
+          <td ng-show="Math.round((userObject[item.$id].totalQuestionsAnswered / userObject[item.$id].totalScore) * 100)">{{ Math.round((userObject[item.$id].totalQuestionsAnswered / userObject[item.$id].totalScore) * 100)  }}%</td>
+          <td ng-hide="Math.round((userObject[item.$id].totalQuestionsAnswered / userObject[item.$id].totalScore) * 100)">0%</td>
+  	    </tr>
+  	  </tbody>
+  	</table>
+    <table class="aveBTRScore table table-striped">
+      <thead>
+        <tr>
+          <th class="text-center">Pos</th>
+          <th class="text-center">Member</th>
+          <th class="text-center">Played</th>
+          <th class="text-center">Av Acc</th>
+          <th class="text-center">BTR Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="(key, item) in userList | orderBy:'aveBTRScore':true">
+          <td><!-- <i class="fa fa-chevron-up"></i> -->{{key + 1}}</td>
+          <td style="width: 150px;">
+            <div class="uploaded-img" style="max-width: 25px; float: left; margin-right: 6px;">
+              <img src="img/person.png" ng-src="{{item.profileImage}}" alt="Player" class="img-responsive" style="padding: 1px;"/>
+            </div>
+            <span style="float: left; line-height: 25px">{{item.firstName}}</span>
+          </td>
+          <td>{{item.played}}</td>
+          <td>{{item.aveBTRScore}}%</td>
+          <td>{{item.score}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <div class="col-xs-12 col-no-padding"> 
+      <div ng-click="switchLeague()"  class="footer-block" style="line-height: 10px; background: rgb(30, 100, 30);">
+        <a style="cursor: pointer;">
+          Team League
+        </a>
+      </div>
+    </div>
+
+    <!-- <div class="col-xs-3 col-no-padding">
+      <div class="footer-block" style="line-height: 10px;">
+          Total BTR<br> Points
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-no-padding">
+      <div ng-click="scoreList()" class="footer-block" style="line-height: 10px;">
+          Average BTR<br> Points
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-no-padding">
+      <div ng-click="aveBTRScoreList()" class="footer-block" style="line-height: 10px;">
+        
+          Average<br> Accuracy
+      </div>
+    </div> -->
+  </footer>
+
+  <div class="is-footer"></div>
+</section>
+
+<section class="team-league hide">
+  <h1 class="page-title">Team League</h1>
+  <div class="container-fluid col-no-padding">
+  	<table class="table table-striped">
+  	  <thead>
+  	    <tr>
+  				<th class="text-center">Pos</th>
+  				<th class="text-center">Team</th>
+  				<th class="text-center">No. of Fans</th>
+  				<th class="text-center">BTR Points</th>
+  				<th class="text-center">Av Points</th>
+  			</tr>
+  	  </thead>
+  	  <tbody>
+        <tr ng-repeat="(key, item) in teamList | orderBy:['-totalScore','supporters']">
+          <td>{{key + 1}}</td>
+          <td style="width: 150px;">
+            <div class="uploaded-img" style="max-width: 25px; float: left; margin-right: 6px;">
+              <img src="img/badge.png" ng-src="{{item.teamImage}}" alt="Player" class="img-responsive" style="padding: 1px;"/>
+            </div>
+            <span style="float: left; line-height: 25px">{{item.teamName}}</span>
+          </td>
+          <td ng-show="item.supporters">{{item.supporters}}</td>
+          <td ng-hide="item.supporters">0</td>
+          <td>{{item.totalScore}}</td>
+          <td ng-show="Math.round(item.totalScore / item.supporters)">{{Math.round(item.totalScore / item.supporters)}}</td>
+          <td ng-hide="Math.round(item.totalScore / item.supporters)">0</td>
+        </tr>
+  	  </tbody>
+  	</table>
+  </div>
+
+  <footer>
+    <div class="col-xs-12 col-no-padding"> 
+      <div ng-click="switchLeague()"  class="footer-block" style="line-height: 10px; background: rgb(30, 100, 30);">
+        <a style="cursor: pointer;">
+          Player League
+        </a>
+      </div>
+    </div>
+
+    <!-- <div class="col-xs-3 col-no-padding">
+      <div class="footer-block" style="line-height: 10px;">
+        <a href="">
+          Total BTR<br> Points
+        </a>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-no-padding">
+      <div class="footer-block" style="line-height: 10px;">
+        <a href="">
+          Average BTR<br> Points
+        </a>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-no-padding">
+      <div class="footer-block" style="line-height: 10px;">
+        <a href="">
+          Average<br> Accuracy
+        </a>
+      </div>
+    </div> -->
+  </footer>
+
+</section>

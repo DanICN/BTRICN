@@ -1,0 +1,170 @@
+<!-- Modal -->
+<div class="modal fade myModal user-message-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        {{messageData.message}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="container text-center">
+  <div class="row">
+    <div class="col-xs-2 col-no-padding">
+      <div class="uploaded-img" style="margin-right: -25px;">
+        <img src="img/person.png" ng-src="{{data.profileImage}}" alt="Player" class="right img-responsive"/>
+      </div>
+    </div>
+    <div class="col-xs-8 col-no-padding">
+      <div class="header-text">
+        <h5>{{data.firstName}}</h5>
+      </div>
+      <div class="header-text">
+        <h5>{{data.favoriteTeam}}</h5>
+      </div>
+    </div>
+    <div class="col-xs-2 col-no-padding">
+      <div class="uploaded-img" style="margin-left: -25px;">
+        <img src="img/badge.png" ng-src="{{data.favoriteTeamImage}}" alt="Team" class="left img-responsive"/>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid col-no-padding">
+
+  <div class="content-strip strip-green">
+    BTR League Position<br> 
+    <i ng-if="data.prevPosition < data.leaguePosition" class="position-arrow glyphicon glyphicon-chevron-down negative"></i> 
+    <i ng-if="data.prevPosition == data.leaguePosition" class="position-arrow glyphicon glyphicon-chevron-left yellow neutral"></i>
+    <i ng-if="data.prevPosition == data.leaguePosition" class="position-arrow glyphicon glyphicon-chevron-right yellow neutral"></i>
+    <i ng-if="data.prevPosition > data.leaguePosition" class="position-arrow glyphicon glyphicon-chevron-up positive"></i> 
+    <strong>{{data.leaguePosition}}</strong>
+  </div>
+
+  <div class="content-strip">
+    <div class="row">
+      <div class="col-xs-6 stat-box">
+        <span class="stat-title">Games Played</span><br>
+        <strong class="games_played">{{data.totalMatchesPlayed}}</strong>
+      </div>
+      <div class="col-xs-6 stat-box">
+        <span class="stat-title">Ave BTR Score Per Game</span><br>
+        <strong>{{aveScorePerGame}}</strong>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-6 stat-box">
+        <span class="stat-title">BTR Score</span><br>
+        <strong>{{data.totalScore}}</strong>
+      </div>
+      <div class="col-xs-6 stat-box">
+        <span class="stat-title">Ave Accuracy</span><br>
+        <strong>
+          {{aveAccuracy}}%
+        </strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-strip-light content-strip">
+
+    <section class="awaiting-game">
+      <span>Players currently online: </span><span><strong>{{totalPlayers}}</strong></span>
+      <br>
+      <h2 class="yellow dateCountdown">IN PLAY</h2>
+      <ul class="time-format">
+        <li class="time-format">DAYS</li>
+        <li class="time-format">HRS</li>
+        <li class="time-format">MINS</li>
+        <li class="time-format">SECS</li>
+      </ul>
+    </section>
+
+    <div class="row match-details">
+      <div class="col-xs-3 col-no-padding">
+        <div class="home-team">
+          <div class="uploaded-img">
+            <img class="" src="{{matchlist[0].homeTeam.teamImage}}" alt="Team" class="img-responsive" style="border-radius: 0; margin-top: -50px;"/>
+          </div>
+          <strong style="padding: 0px 5px;">{{matchlist[0].homeTeam.teamName}}</strong>
+        </div>
+      </div>
+
+      <div class="col-xs-6 col-no-padding">
+        <a href="#/live-matches/:id" class="btn-join-game btn btn-primary" style="display:none;">Join game</a>
+        <h3 class="next-match" style="display:none;">Next Match</h3>
+      </div>
+
+      <div class="col-xs-3 col-no-padding">
+        <div class="away-team">
+          <div class="uploaded-img">
+            <img class="" src="{{matchlist[0].awayTeam.teamImage}}" alt="Team" class="img-responsive" style="border-radius: 0; margin-top: -50px;"/>
+          </div>
+          <strong style="padding: 0px 5px;" class="">{{matchlist[0].awayTeam.teamName}}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:10px;">
+      <div class="col-xs-12 col-padding-5">
+        <ul class="date-time-stadium">
+          <li>Date: {{matchlist[0].matchTime.split(' ')[0]}} </li>
+          <li>Kick off: {{matchlist[0].matchTime.split(' ')[1]}} </li>
+          <li class="last"><span>Stadium:&nbsp; {{matchlist[0].stadium}}</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <section class="share">
+    <div class="row">
+      <div class="col-xs-12">
+        <hr>
+        <a href="#/twitter/:id">Share with your mates <i class="social-icon fa fa-twitter"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="col-xs-3 col-no-padding">
+      <div class="footer-block">
+        <a href="#/live-matches/:id">
+          Live Matches
+        </a>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-no-padding">
+      <div class="footer-block">
+        <a href="#/leagues/:id">
+          Leagues
+        </a>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-no-padding">
+      <div class="footer-block">
+        <a href="#/performances/:id">
+          Performances
+        </a>
+      </div>
+    </div>
+
+    <div class="col-xs-3 col-no-padding">
+      <div class="footer-block">
+        <a href="#/twitter/:id">
+          Tweet
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<div class="is-footer"></div>

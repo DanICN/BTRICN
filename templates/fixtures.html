@@ -1,0 +1,55 @@
+<h1 class="page-title">FIXTURES</h1>
+
+<div class="container-fluid col-no-padding">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+				<th class="text-center">Date</th>
+				<th class="text-center">Kick Off</th>
+				<th class="text-center">Day</th>
+				<th class="text-center">Home</th>
+				<th class="text-center">Away</th>
+				<th class="text-center"></th>
+			</tr>
+	  </thead>
+	  <tbody>
+	    <tr ng-repeat="item in list" ng-class="item.isCurrent ? 'in-play-row' : ''" ng-if="!item.isArchived">
+	      <td>
+	      	<a class="fixture-link" href="#/fixture/:id/{{item.$id}}">
+	      		{{item.matchTime.split(' ')[0]}}
+	      	</a>
+	      </td>
+	      <td ng-if="item.isCurrent == false">
+	      	<a class="fixture-link" href="#/fixture/:id/{{item.$id}}">
+	      		Upcoming
+	      	</a>
+	      </td>
+	      <td ng-if="item.isCurrent == true">
+	      	<a class="fixture-link" href="#/fixture/:id/{{item.$id}}">
+	      		IN PLAY
+	      	</a>
+	      </td>
+	      <td>
+	      	<a class="fixture-link" href="#/fixture/:id/{{item.$id}}">
+	      		{{item.matchTime.split(' ')[1]}}
+	     		</a>
+	      </td>
+	      <td>
+	      	<a class="fixture-link" href="#/fixture/:id/{{item.$id}}">
+	      		{{ item.homeTeam.teamName }}
+	      	</a>
+	      </td>
+	      <td>
+	      	<a class="fixture-link" href="#/fixture/:id/{{item.$id}}">
+	      		{{ item.awayTeam.teamName }}
+	      	</a>
+	      </td>
+	      <td>
+	      	<a class="fixture-link" href="#/fixture/:id/{{item.$id}}">
+	      		<i class="fa fa-chevron-right"></i>
+	      	</a>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>

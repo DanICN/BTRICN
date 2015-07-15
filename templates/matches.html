@@ -1,0 +1,101 @@
+<div class="container admin-container">
+	<div class="row">  
+		<div class="admin-quickbar row">
+			<div class="col-md-1 col-xs-3">
+				<a href="#/matches">Matches</a>
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/questions">Questions</a> 
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/teamsheets">Teams</a>
+			</div>
+			<div class="col-md-2 col-xs-3">
+				<a href="#/answers">Post a Question</a>
+			</div>
+		</div>
+		<hr>
+		<h2 class="text-center">Matches</h2>
+		<ul>
+			<li ng-repeat="item in list" class="match-box">
+				<div class="row">
+					<div class="col-xs-3">
+						<div ng-if='item.isCurrent' class="is-live-boolean is-live-boolean-true">
+							<i class="fa fa-check"></i>
+						</div>
+						<div ng-click="live_match(item)" ng-if='!item.isCurrent' class="is-live-boolean">
+						</div>
+					</div>
+					<div class="col-xs-7">
+						<a href="#/match/{{item.$id}}" class="match-link">
+							<div class="teams-playing"><span class="yellow">{{ item.homeTeam.teamName }}</span> <span style="margin: 0 10px">vs</span> <span class="yellow">{{ item.awayTeam.teamName }}</span> <span class="admin-match-details">({{ item.matchTime }}, {{ item.stadium }})</span></div>
+						</a>
+					</div>
+					<div class="col-xs-2">
+						<a href="#/match/{{item.$id}}" class="match-link">
+							<div class="to-match"><i class="yellow right fa fa-chevron-right"></i></div>
+						</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<hr>
+		<section class="text-center">
+			<h2>Create New Match</h2>
+			<br>
+			<form>
+				<div class="row">
+					<div class="col-md-5">
+						<div class="select-menu">
+							<button class="btn btn-primary dropdown-toggle" type="button" id="questionList" data-toggle="dropdown" aria-expanded="true">
+								Select Home Team
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="questionList">
+								<li ng-click="teamData('homeTeam', item)" ng-repeat="item in teamList" class="select-team" role="presentation">
+									<i class="fa fa-caret-right"></i>
+									<span>{{ item.teamName }}</span>
+								</li>
+							</ul>
+							<h3 class="homeTeam selected-team form-control"></h3>
+						</div>
+					</div>
+					<div class="col-md-2 text-center">
+						<span style="font-size: 32px; line-height: 75px;">vs</span>
+					</div>
+					<div class="col-md-5">
+						<div class="select-menu">
+							<button class="btn btn-primary dropdown-toggle" type="button" id="questionList" data-toggle="dropdown" aria-expanded="true">
+								Select Away Team
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="questionList">
+								<li ng-click="teamData('awayTeam', item)" ng-repeat="item in teamList" class="select-team" role="presentation">
+									<i class="fa fa-caret-right"></i>
+									<span>{{ item.teamName }}</span>
+								</li>
+							</ul>
+							<h3 class="awayTeam selected-team form-control"></h3>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="matchDate">Date</label>
+						<input id="datetimepicker" type="text" ng-model="data.matchTime" placeholder="Date">
+					</div>
+					<div class="col-md-6">
+						<label for="stadium">Stadium</label>
+						<input id="stadium" type="text" ng-model="data.stadium" class="form-control" placeholder="Stadium">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-primary btn-profile" ng-click="add_new_match()">Create Match</button>
+					</div>
+				</div>
+			</form>
+		</section>
+	</div>
+
+</div>

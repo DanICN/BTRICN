@@ -1,0 +1,204 @@
+<div class="answer-is-overlay">
+  <div class="answer-is-overlay-text">Preparing questions for players...</div>
+</div>
+
+ <div class="container admin-container">
+	<div class="row">  
+	  <div class="col-md-12">
+	  	<div class="admin-quickbar row">
+			<div class="col-md-1 col-xs-3">
+				<a href="#/matches">Matches</a>
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/questions">Questions</a> 
+			</div>
+			<div class="col-md-1 col-xs-3">
+				<a href="#/teamsheets">Teams</a>
+			</div>
+			<div class="col-md-2 col-xs-3">
+				<a href="#/answers">Post a Question</a>
+			</div>
+		</div>
+			<hr>
+			 <button class="btn btn-primary" ng-click="reset_players_scores()">reset players scores</button>
+			 (this is for testing purposes)
+			 <button class="btn btn-primary" ng-click="refresh_pages()">refresh</button>
+			 <span>This gives admin the ability to refresh the players pages</span>
+	  	<hr>
+	  	<section class="text-center">
+	  		<h2>Current Score</h2>
+	  		<div class="row">
+	  			<div class="col-md-5">
+	  				<input class="form-control" type="number" min="0" max="19" placeholder='Home Team Score' ng-model="liveScore.homeTeam">
+	  			</div>
+	  			<div class="col-md-2">
+	  				<span style="font-size: 32px; line-height: 75px;">vs</span>
+	  			</div>
+	  			<div class="col-md-5">
+	  				<input class="form-control" type="number" min="0" max="19" placeholder='Away Team Score' ng-model="liveScore.awayTeam">
+	  			</div>
+	  		</div>
+	  		<button class="btn btn-primary" ng-click="setScore(liveScore.homeTeam,liveScore.awayTeam)">Set score</button>
+		    <br>
+
+		    <h2>Pick Question</h2>
+
+		    <div class="select-menu" ng-repeat="(key,question) in questionList">
+		      <button style="margin: 5px 0;" class="btn btn-primary dropdown-toggle" type="button" id="questionList" data-toggle="dropdown" aria-expanded="true">
+		        {{questionList[key].$id}}
+		        <span class="caret"></span>
+		      </button>
+		      <ul class="dropdown-menu" role="menu" aria-labelledby="questionList">
+	          <li ng-repeat="item in question" role="presentation">
+	            <div class="select-team" ng-click="select_question(item)">
+	              <i class="fa fa-question-circle"></i>
+	              {{item.questionTitle}}
+	            </div>
+	          </li>
+		      </ul>
+		    </div>
+
+				<a href="#/questions" class="btn btn-primary btn-profile">Create a new Question</a>
+
+
+				<!-- menu section -->
+        <section class="text-center question_title_block">
+			    <hr>
+			    <h2>Question</h2>
+          <h4 class="question_title">{{questionTitle}}</h4>
+          <p class="btr_answer">BTR's answer is</p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+              <span class="sr-only">60% Complete</span>
+            </div>
+          </div>
+          <p class="question_countdown"></p>
+        </section>
+
+        <div class="explanation-box">
+          <p><strong>Official Be The Ref Comment:</strong></p>
+          <p class="explanation"></p>
+        </div>
+				<!-- end menu section -->
+
+        <div class="question_section question_type">
+	        <div class="question" ng-click="select_answer(q1, 1)">
+	          <div class="row">
+	            <div class="col-xs-1">
+	              <div class="question-option">A</div>
+	            </div>
+	            <div class="col-xs-7">
+	              <div class="question-text q1" id="question1" data-id="q1">{{q1}}</div>
+	            </div>
+	            <div class="col-xs-1 col-no-padding playerbase-percentage-1">
+	            </div>
+	            <div class="col-xs-2 col-no-padding scores score_q1">
+	            </div>
+	          </div>
+	        </div>
+	        <div class="question" ng-click="select_answer(q2, 2)">
+	          <div class="row">
+	            <div class="col-xs-1">
+	              <div class="question-option">B</div>
+	            </div>
+	            <div class="col-xs-7">
+	              <div class="question-text q2" id="question2" data-id="q2">{{q2}}</div>
+	            </div>
+	            <div class="col-xs-1 col-no-padding playerbase-percentage-2">
+	            </div>
+	            <div class="col-xs-2 col-no-padding scores score_q2">
+	            </div>
+	          </div>
+	        </div>
+	        <div class="question" ng-click="select_answer(q3, 3)">
+	          <div class="row">
+	            <div class="col-xs-1">
+	              <div class="question-option">C</div>
+	            </div>
+	            <div class="col-xs-7">
+	              <div class="question-text q3" id="question3" data-id="q3">{{q3}}</div>
+	            </div>
+	            <div class="col-xs-1 col-no-padding playerbase-percentage-3">
+	            </div>
+	            <div class="col-xs-2 col-no-padding scores score_q3">
+	            </div>
+	          </div>
+	        </div>
+	        <div class="question" ng-click="select_answer(q4, 4)">
+	          <div class="row">
+	            <div class="col-xs-1">
+	              <div class="question-option">D</div>
+	            </div>
+	            <div class="col-xs-7">
+	              <div class="question-text q4" id="question4" data-id="q4">{{q4}}</div>
+	            </div>
+	            <div class="col-xs-1 col-no-padding playerbase-percentage-4">
+	            </div>
+	            <div class="col-xs-2 col-no-padding scores score_q4">
+	            </div>
+	          </div>
+	        </div>
+        </div>
+        <!-- end question section -->
+        
+				<!-- teamsheets -->
+				<div class="teamsheet_section question_type">
+					<div class="col-xs-6">
+		        <ul class="live-match-teamsheet-player-matchlist" ng-repeat="(key, player) in matchlist[0].homeTeam.players">
+		        	<button ng-if="key != 0" ng-click='select_answer(player, key)' class="btn btn-team">{{player}}</button>
+		        </ul>
+		        <br>
+		        <h4><strong>Subs</strong></h4>
+
+		        <ul class="live-match-teamsheet-player-matchlist subs" ng-repeat="(key, sub) in matchlist[0].homeTeam.subs track by $index">
+		          <button ng-if="key != 0" ng-click='select_answer(sub, key+11)' class="btn btn-team">{{sub}}</button>
+		        </ul>
+					</div>
+
+					<div class="col-xs-6">
+						<ul class="live-match-teamsheet-player-matchlist" ng-repeat="(key, player) in matchlist[0].awayTeam.players">
+		          <button ng-if="key != 0" ng-click='select_answer(player, key+22)' class="btn btn-team">{{player}}</button>
+		        </ul>
+		        <br>
+		        <h4><strong>Subs</strong></h4>
+		        <ul class="live-match-teamsheet-player-matchlist subs" ng-repeat="(key, sub) in matchlist[0].awayTeam.subs track by $index">
+		          <button ng-if="key != 0" ng-click='select_answer(sub, key+33)' class="btn btn-team">{{sub}}</button>
+		        </ul>
+					</div>
+				</div>
+				<!-- end teamsheet -->
+
+				<div class="row">
+					<textarea rows="4" class="match-box explanation-box" placeholder="Please write your explanation here..." ng-model="explanation"></textarea>
+				  <button class="btn btn-primary btn-profile motm_button" ng-click='send_question()'>Send Question</button>
+				
+				    <hr>
+				    <h2>Post Message</h2>
+				    <textarea rows="4" class="match-box" ng-model="message"></textarea>
+				    <button class="btn btn-primary btn-profile" ng-click='post_message(message)'>Post Message</button>
+
+				    <hr>
+				    <h2>Match answers</h2>
+				    <div class="matchAnswers" style="max-height: 500px;  overflow: scroll;">
+					    <span ng-repeat="item in answerList.slice().reverse()" >
+						    <p ng-click="select_question(item)">Question: {{item.questionTitle}} <br> (click to change answer)</p>
+						    <p>Btr answer number: {{item.answerNumber}}</p>
+						    <!-- this can be used as a delete question function -->
+						    <!-- <p ng-click="deleteQuestion(item.$id)">Btr answer: {{item.answer}} <br> (click to delete)</p> -->
+						    <p>Btr answer: {{item.answer}}</p>
+						    <p>Players answers</p>
+						    <ul ng-repeat="player in item.player_answers">
+						    	<li>Player answer: {{player.answer}}</li>
+						    	<li>Player question number: {{player.answerNumber}}</li>
+						    	<li>Player answer time: {{player.points}}</li>
+						    </ul>
+						  	<hr>
+					    </span>
+				    </div>
+					</div>
+				</div>
+
+			</section>
+		</div>
+	</div>
+</div>

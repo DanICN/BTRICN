@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html ng-app='btr' class='no-js' lang='en'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Be The Ref</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/sweet-alert.css">
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+
+    <!--[if lt IE 9]>
+        <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+    <![endif]-->
+
+    <!-- FilePicker.io -->
+    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+  </head>
+  <body>
+
+    <nav>
+      <div class="top-bar">
+
+        <div class="toggle-menu">
+          <div class="icon-bar"></div>
+          <div class="icon-bar"></div>
+          <div class="icon-bar"></div>
+        </div>
+
+        <a href="#/user/:id">
+          <img src="/img/logo-nav.png" class="nav-logo"/>
+        </a>
+
+      </div>
+
+      <div class="slide-in">
+        <ul class="nav-menu">
+          <li>
+            <a href="#/user/:id">Home</a>
+          </li>
+          <li>
+            <a href="#/live-matches/:id">Live Matches</a>
+          </li>
+          <li>
+            <a href="#/performances/:id">Performances</a>
+          </li>
+          <li>
+            <a href="#/fixtures/:id">Fixtures</a>
+          </li>
+          <li>
+            <a href="#/leagues/:id">Leagues</a>
+          </li>
+          <li>
+            <a href="#/twitter/:id">Twitter</a>
+          </li>
+          <li>
+            <a href="#/settings/:id">Settings</a>
+          </li>
+          <li>
+            <a href="#/tutorials/:id">Tutorials</a>
+          </li>
+          <li>
+            <a href="#/about/:id">About</a>
+          </li>
+          <li>
+            <a href="#/admin/:id">Admin</a>
+          </li>
+          <li>
+            <a id="logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <div ng-view></div>
+    </main>
+
+    <!-- vendor files -->
+    
+    <!-- AngularJS -->
+    <script type="text/javascript" src="js/vendor/angular/angular.js"></script>
+    <script type="text/javascript" src="js/vendor/angular/angular-route.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="js/vendor/angularfire.min.js"></script>
+    <!-- JQuery magic ;)  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="js/vendor/jquery.touchSwipe.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <!-- Bootstrappy stuff -->
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/angular-ui-bootstrap.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script src="js/vendor/owl.carousel.min.js"></script>
+
+    <!-- Sweet Alerts -->
+    <script src="js/vendor/sweet-alert.min.js"></script>
+
+    <!-- jQuery Datetime picker -->
+    <script src="js/vendor/jquery.datetimepicker.js"></script>
+
+    <!-- Countdown -->
+    <script src="js/vendor/jquery.countdown.min.js"></script>
+
+
+    <!-- Application files -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/routes.js"></script>
+    <!-- Services -->
+    <script type="text/javascript" src="js/services/auth.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/main.js"></script>
+    <script src="js/controllers/login.js"></script>
+    <script src="js/controllers/settings.js"></script>
+    <script src="js/controllers/fixtures.js"></script>
+    <script src="js/controllers/fixture.js"></script>
+    <script src="js/controllers/liveMatches.js"></script>
+    <script src="js/controllers/questions.js"></script>
+    <script src="js/controllers/question.js"></script>
+    <script src="js/controllers/answers.js"></script>
+    <script src="js/controllers/answer.js"></script>
+    <script src="js/controllers/scores.js"></script>
+    <script src="js/controllers/score.js"></script>
+    <script src="js/controllers/teamsheets.js"></script>
+    <script src="js/controllers/teamsheet.js"></script>
+    <script src="js/controllers/matches.js"></script>
+    <script src="js/controllers/match.js"></script>
+    <script src="js/controllers/signup.js"></script>
+    <script src="js/controllers/admin.js"></script>
+    <script src="js/controllers/tutorials.js"></script>
+    <script src="js/controllers/performances.js"></script>
+    <script src="js/controllers/leagues.js"></script>
+    <script src="js/controllers/twitter.js"></script>
+    <script src="js/controllers/liveMatchTeamsheet.js"></script>
+    <script src="js/controllers/register.js"></script>
+    <script src="js/controllers/forgot-password.js"></script>
+    <script src="js/controllers/changePassword.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+    </script>
+  </body>
+</html>
